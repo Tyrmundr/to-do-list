@@ -62,8 +62,9 @@ function createNavbar() {
 
 //Creating sidebar
 function createSidebar() {
-    const siderbar = document.createElement("sidebar");
-    siderbar.classList.add("sidebar");
+    const sidebar = document.createElement("sidebar");
+    sidebar.classList.add("sidebar");
+    sidebar.setAttribute("id", "sidebar");
 }
 
 // Creating a main page
@@ -71,6 +72,26 @@ function createMain() {
     const main = document.createElement("main");
     main.classList.add("main");
     main.setAttribute("id", "main");
+}
+
+//Creating a priority page - contains sidebar and main
+function createPriorityPage() {
+    const priority = document.createElement("div");
+    priority.classList.add("priority");
+
+    priority.appendChild(createSidebar);
+    priority.appendChild(createMain);
+
+    return priority;
+}
+
+//Creating a footer
+function createFooter() {
+    const footer = document.createElement("footer");
+    footer.classList.add("footer");
+    footer.innerText = "Copyright © Tyrmundr 2021";
+
+    return footer;
 }
 
 // Button calibration => setting active class
@@ -87,3 +108,13 @@ function setActiveBtn(button) {
 }
 
 // Initializing the home page
+function initializePage() {
+    const container = document.getElementById("container");
+    container.classList.add("container");
+
+    container.appendChild(createHeader());
+    container.appendChild(createPriorityPage());
+    container.appendChild(createFooter());
+}
+
+export default initializePage;
