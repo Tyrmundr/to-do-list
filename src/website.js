@@ -65,6 +65,8 @@ function createSidebar() {
     const sidebar = document.createElement("sidebar");
     sidebar.classList.add("sidebar");
     sidebar.setAttribute("id", "sidebar");
+
+    return sidebar;
 }
 
 // Creating a main page
@@ -72,6 +74,8 @@ function createMain() {
     const main = document.createElement("main");
     main.classList.add("main");
     main.setAttribute("id", "main");
+
+    return main;
 }
 
 //Creating a priority page - contains sidebar and main
@@ -79,8 +83,8 @@ function createPriorityPage() {
     const priority = document.createElement("div");
     priority.classList.add("priority");
 
-    priority.appendChild(createSidebar);
-    priority.appendChild(createMain);
+    priority.appendChild(createSidebar());
+    priority.appendChild(createMain());
 
     return priority;
 }
@@ -115,6 +119,10 @@ function initializePage() {
     container.appendChild(createHeader());
     container.appendChild(createPriorityPage());
     container.appendChild(createFooter());
+    
+    setActiveBtn(document.querySelector(".btn-nav"));
+
+    loadHome();
 }
 
 export default initializePage;
